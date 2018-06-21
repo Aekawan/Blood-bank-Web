@@ -1,0 +1,22 @@
+<?php
+session_start();
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+include './main.service.php';
+include '../function.service.php';
+//รับค่ามาใส่ตัวแปร
+    $email = $_REQUEST['email'];
+    //จากนั้นให้ไปยังหน้า profile
+    $res = checkEmail($email);
+    if($res == false){
+
+      $data = res_success(null);
+
+    } else {
+
+      $data = res_error(404);
+
+    }
+
+sendJson($data);
+?>
